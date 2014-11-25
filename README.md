@@ -63,12 +63,12 @@ You can simulate MJPG streaming by requesting new images on a specific interval.
 ```javascript
 // JavaScript example using jQuery
 
-// Active camera will refresh every 2 seconds
-var TIMEOUT = 2000;
-var refreshInterval = setInterval(function() {
-  var random = Math.floor(Math.random() * Math.pow(2, 31));
-  $('img#camera').attr('src', 'http://localhost:3000/camera?i=' + random);
-}, TIMEOUT);	
+var socket = io();
+			$(document).ready(function() {
+				socket.on("image sent", function (base64Image) {
+					$('img#camera').attr('src', base64Image);
+				});
+			});	
 ```
 
 ```html
