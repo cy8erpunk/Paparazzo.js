@@ -1,41 +1,38 @@
-# Using the Paparazzo.js module
-
-Paparazzo = require '../src/paparazzo'
-http = require 'http'
-url = require 'url'
-
-# For a list of public cameras to test check:
-# https://github.com/rodowi/Paparazzo.js/wiki/List-of-public-cameras
+sendImage = ->
+  base64Image = "data:image/jpeg;base64," + btoa(updatedImage)
+  io.emit "image sent", base64Image
+  console.log "Sent image of " + base64Image.length + " bytes"
+  return
+btoa = require('btoa')
+Paparazzo = require("../src/paparazzo")
+app = require("express")()
+http = require("http").Server(app)
+io = require("socket.io")(http)
 
 paparazzo = new Paparazzo
     host: 'plazacam.studentaffairs.duke.edu'
     port: 80
     path: '/mjpg/video.mjpg'
 
-updatedImage = ''
+updatedImage = ""
 
 paparazzo.on "update", (image) =>
-    updatedImage = image
-    console.log "Downloaded #{image.length} bytes"
+    updatedImage = String(image)
+    sendImage(updatedImage)
 
 paparazzo.on 'error', (error) =>
     console.log "Error: #{error.message}"
 
 paparazzo.start()
 
-http.createServer (req, res) ->
-    data = ''
-    path = url.parse(req.url).pathname
-        
-    if path == '/camera' and updatedImage?
-        data = updatedImage
-        console.log "Will serve image of #{data.length} bytes"
+app.get "/", (req, res) ->
+  res.sendfile "demo/demo.html"
+  return
 
-    res.writeHead 200,
-        'Content-Type': 'image/jpeg'
-        'Content-Length': data.length
+ io.on "connection", (socket) ->
+  console.log "a user connected"
+  return
 
-    res.write data, 'binary'
-    res.end()
-.listen(3000)
-
+ http.listen 3000, ->
+  console.log "listening on *:3000"
+  return
