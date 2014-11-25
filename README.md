@@ -58,7 +58,7 @@ paparazzo.start()
 
 **Client side**
 
-You can simulate MJPG streaming by requesting new images on a specific interval. Appending a random parameter avoids caching.
+You can simulate MJPG streaming by updating an IMG SRC with a base64 encoded JPEG sent on a specific socket event:
 
 ```javascript
 // JavaScript example using jQuery
