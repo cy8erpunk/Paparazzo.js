@@ -99,4 +99,4 @@ License
 <a rel="license" href="http://opensource.org/licenses/MIT">The MIT License (MIT)</a>
 
 Copyright (c) 2014 Rodolfo Wilhelmy <[rod@wilhel.me](mailto:rod@wilhel.me)><br>
-Copyright (c) 2014 Youview TV Ltd <[colin.robertson@youview.com](mailto:colin.robertson@youview.com)>
+Copyright (c) 2014 YouView TV Ltd <[colin.robertson@youview.com](mailto:colin.robertson@youview.com)>
