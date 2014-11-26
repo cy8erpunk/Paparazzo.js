@@ -59,7 +59,7 @@ paparazzo.start()
 You can simulate MJPG streaming by updating an inline image source with a base64 encoded JPEG sent on a specific socket event:
 
 ```javascript
-// JavaScript example using jQuery
+// JavaScript example using jQuery and socket.io
 
 var socket = io();
 			$(document).ready(function() {
