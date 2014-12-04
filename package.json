@@ -17,6 +17,9 @@
         "coffee-script": "1.2.0",
         "chai": "0.5.2",
         "mocha": "1.0.1"
+        "btoa": "~1.1.2",
+        "express": "^4.0.0",
+        "socket.io": "^1.2.1"
     },
     "engines": {
       "node": "v0.6.5"
