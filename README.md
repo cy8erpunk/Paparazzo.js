@@ -84,7 +84,7 @@ section.
 
 Implemented features in this fork:
 -  
-* Websockets implementation to get more FPS
+* Websockets implementation to get more FPS (Tests have been done up to 25fps)
 
 TODO
 -  
